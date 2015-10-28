@@ -1,5 +1,5 @@
 # NextCapitalDemo
-AngularJS with API
+AngularJS with API check the (http://bowling-api.nextcapital.com/)
 #Main feature
 Using AngularJS framwork with Bootstrap and Bootstrap UI for ngDialog<br />
 Using two-way data binding avoid page refreshing when user need to add bowler and league<br />
