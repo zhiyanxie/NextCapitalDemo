@@ -1,0 +1,60 @@
+<p><a href="#/login" class="btn btn-primary pull-right">Logout</a></p>
+<h3><span><img id="ball" src="../img/ball.png"></span>hi! {{vm.user.username}}</h3>
+<p>&nbsp;</p>
+
+<blockquote>
+ <div class="panel panel-primary">
+    <div class="panel-heading">
+          <h3 class="panel-title"></span>New League Name {{vm.leaguename}}</h3>
+    </div>
+    <div class="panel-body">    
+      <form name="form" ng-submit="vm.addleague()" role="form">
+   <!--  Live Preview -->
+     
+      
+       <!--leaguename-->
+      <div class="form-group" ng-class="{ 'has-error': form.leaguename.$dirty && form.leaguename.$error.required }">
+      <label for="leaguename"></label>
+      <input type="text" name="leaguename" id="leaguename" class="form-control" ng-model="vm.leaguename" placeholder="Write your league name" required />
+      <span ng-show="form.leaguename.$dirty && form.leaguename.$error.required" class="help-block">League name is required</span> 
+      </div>
+     
+     <!--USer submit -->
+    <div class="form-actions">
+      <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-danger">Add</button>
+     </div>
+      </form>
+    </div>
+ </div>
+</blockquote>  
+
+
+<!--showing all leagues-->
+<h3>Leagues:</h3>
+<li ng-repeat="league in vm.allLeagues | orderBy:'-id'">
+ <blockquote>
+  <div class="panel panel-primary">
+    
+  
+       <div class="panel-heading">
+             <h3 class="panel-title">League name:{{league.name}}
+       </div>   
+       <div class="panel-body">
+          <Strong>{{league.id}}</Strong>
+          <div class="form-actions">
+          
+          <form name="form" ng-submit="vm.listBowlers(league.id)" role="form">
+             <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="pull-right btn btn-primary">Enter
+             </button>
+           </form>
+          </div>
+       </div>
+    
+  	</div>
+</blockquote>  
+</li>
+
+
+
+
+

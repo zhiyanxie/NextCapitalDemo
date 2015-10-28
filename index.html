@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8" />
+    <title>AngularJS User Registration and Login Example</title>
+    <!-- Latest compiled and minified CSS bootstrap-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <link href="css/app.css" rel="stylesheet" />
+    <link href="css/animation.css" rel="stylesheet" />
+</head>
+<body>
+ <div class="container">
+    <div class="jumbotron myBackground">
+        <div class="container">
+            <div class="col-sm-8 col-sm-offset-2">
+                <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
+              
+                      <div ng-view></div>
+              
+            </div>
+        </div>
+    </div>
+ </div>
+    <div class="credits text-center">
+        <p>
+            <a href="http://bowling-api.nextcapital.com">NextCapital Demo Project</a>
+        </p>
+        <p>
+            <a href="http://www.kiwispark.com">kiwispark.com</a>
+        </p>
+    </div>
+
+    <script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="//code.angularjs.org/1.2.20/angular.js"></script>
+    <script src="//code.angularjs.org/1.2.20/angular-route.js"></script>
+    <script src="//code.angularjs.org/1.2.13/angular-cookies.js"></script>
+    <script src="javascript/vendor/uibootstrap.min.js"></script>
+
+    <script src="javascript/app.js"></script>
+    <script src="javascript/services/authentication.service.js"></script>
+    <script src="javascript/services/flash.service.js"></script>
+    <script src="javascript/services/user.service.js"></script>
+    <script src="javascript/services/league.service.js"></script>
+    <script src="javascript/services/bowler.service.js"></script>
+    <script src="javascript/services/leagueauth.service.js"></script>
+    <script src="javascript/services/lottery.service.js"></script>
+    <!-- user service that uses an api -->
+    <script src="javascript/vendor/client.js"></script>
+
+    
+    <script src="javascript/controllers/BowlerController.js"></script>
+    <script src="javascript/controllers/HomeController.js"></script>
+    <script src="javascript/controllers/LoginController.js"></script>
+    <script src="javascript/controllers/RegisterController.js"></script>
+    
+</body>
+</html>

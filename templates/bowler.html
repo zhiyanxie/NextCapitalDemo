@@ -1,0 +1,106 @@
+<p><a href="#/login" class="btn btn-primary pull-right">Logout</a></p>
+<h3><span><img id="ball" src="../img/ball.png"></span>Welcome to League {{vm.currentLeague}} !</h3>
+
+<h2> Current Jackpot :{{vm.currentLottery.balance | currency}}<span></span></h2>
+<!-- draw a wiing ticket -->
+<div>
+<form class="pull-left"name="form" ng-submit="vm.DrawTicket()" role="form">
+    <button type="submit" class=" btn btn-danger">Draw a winning ticket!</button>  
+</form> 
+<form>
+    <button class="btn btn-success pull-right" ng-click="open()">View Lotteries!</button>        
+
+</form>
+</div>
+
+<!-- View all lotteries -->
+
+<script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Lotteries!</h3>
+        </div>
+        <div class="modal-body">
+            <ul>
+                <li ng-repeat="lottery in lotteries">
+                    <a>Lottery ID: {{lottery.id}} Balance: {{lottery.balance  | currency}} Payout:  {{lottery.payout | currency}}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+</script>
+
+
+
+
+<!-- logout-- and Titile-->
+<p>&nbsp;</p>
+
+<blockquote>
+ <div class="panel panel-primary">
+    <div class="panel-heading">
+          <h3 class="panel-title">Bowler Name {{vm.bowlerName}}</h3>
+    </div>
+    <div class="panel-body">    
+      <form Name="form" ng-submit="vm.addBowler()" role="form">
+   <!--  Live Preview -->
+     
+      
+       <!--bowlerName-->
+      <div class="form-group" ng-class="{ 'has-error': form.bowlerName.$dirty && form.bowlerName.$error.required }">
+      <label for="bowlerName"></label>
+      <input type="text" Name="bowlerName" id="bowlerName" class="form-control" ng-model="vm.bowlerName" placeholder="Write your Bowler Name" required />
+      <span ng-show="form.bowlerName.$dirty && form.bowlerName.$error.required" class="help-block">bowler Name is required</span> 
+      </div>
+     
+     <!--USer submit -->
+    <div class="form-actions">
+      <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-danger">Join!</button>
+     </div>
+      </form>
+    </div>
+ </div>
+</blockquote>
+
+<!-- Payment confirm-->
+<script type="text/ng-template" id="Pay.html">
+        <div class="modal-header">
+		  Payment
+        </div>
+        <div class="modal-footer">
+		<img class="pull-left" src="img/Paypal.png">
+            <button class="btn btn-primary" ng-click="vm.Buy()">Confirm</button>
+            <button class="btn btn-warning" ng-click="vm.Cancel()">Cancel</button>
+        </div>
+</script> 
+ 
+
+
+<!--showing all bowlers-->
+<h3>Bowlers:</h3>
+<li ng-repeat="bowler in vm.allBowlers |  orderBy:'-id'">
+ <blockquote>
+  <div class="panel panel-primary">
+    
+  
+       <div class="panel-heading">
+             <h3 class="panel-title">Bowler Name:  {{bowler.name}}
+       </div>   
+       <div class="panel-body">
+          <Strong>BowlerId:{{bowler.id}}</Strong>
+          <div class="form-actions">
+          
+           <form name="form" ng-submit="vm.Pay(vm.currentLeague,vm.currentLottery.id,bowler.id)" role="form">
+   
+           <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="pull-right btn btn-primary hvr-sweep-to-right">Buy Ticket
+             </button>
+           </form>
+          </div>
+       </div>
+    
+  	</div>
+</blockquote>  
+</li>
+
+
