@@ -1,3 +1,6 @@
+#Live Demo
+http://nextcapital.web44.net/
+
 # NextCapitalDemo
 AngularJS with API check the (http://bowling-api.nextcapital.com/)
 #Main feature
